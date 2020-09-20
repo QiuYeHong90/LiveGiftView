@@ -59,6 +59,7 @@
 		A10328F125165B8D0088F108 /* GiftModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftModel.swift; sourceTree = "<group>"; };
 		A10328F625165D310088F108 /* GiftShowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftShowView.xib; sourceTree = "<group>"; };
 		A10328FB25174D1B0088F108 /* GiftNumberLab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftNumberLab.swift; sourceTree = "<group>"; };
+		A1032900251755B80088F108 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +90,7 @@
 		A1032868251628700088F108 = {
 			isa = PBXGroup;
 			children = (
+				A1032900251755B80088F108 /* README.md */,
 				A1032873251628700088F108 /* LiveGiftView */,
 				A103288A251628720088F108 /* LiveGiftViewTests */,
 				A1032895251628720088F108 /* LiveGiftViewUITests */,
