@@ -37,7 +37,9 @@ class GiftShowView: UIView {
     }
     var status:GiftShowStatus = .ended
     
+    /// 礼物开始出现，和结束的时候，回调
     var reloadAnimation:(()->Void)?
+    /// 礼物结束动画完成结束
     var endFinshCall:((GiftShowView?)->Void)?
     
     class func createViewWith(supV:UIView,reloadAnimation:@escaping (()->Void),endFinshCall:@escaping ((GiftShowView?)->Void)) -> GiftShowView {
@@ -134,4 +136,10 @@ class GiftShowView: UIView {
         self.headerImgView.layer.cornerRadius = self.headerImgView.bounds.size.height/2
         self.headerImgView.clipsToBounds = true
     }
+    
+    deinit {
+        print("释放了  \(self)");
+    }
 }
+
+

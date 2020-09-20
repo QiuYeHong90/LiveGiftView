@@ -193,4 +193,16 @@ class GiftManager: NSObject {
         }
     }
     
+    
+    func removeAllGifts() {
+        
+        for item in self.giftViews {
+            item.removeFromSuperview()
+        }
+        
+        self.giftViews.removeAll()
+        
+        
+        
+    }
 }

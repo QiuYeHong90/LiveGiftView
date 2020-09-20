@@ -44,14 +44,23 @@
                                     <action selector="sendBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guD-r6-Mo2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tPG-4w-y2B">
+                                <rect key="frame" x="20" y="64" width="31" height="30"/>
+                                <state key="normal" title="释放"/>
+                                <connections>
+                                    <action selector="clearViewsClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o8F-Cj-5hu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9to-VP-iMD" firstAttribute="leading" secondItem="VgI-jt-bUN" secondAttribute="leading" id="2os-cC-qq9"/>
                             <constraint firstItem="msW-Ye-Aka" firstAttribute="centerX" secondItem="9to-VP-iMD" secondAttribute="centerX" id="5fw-jp-VIO"/>
+                            <constraint firstItem="tPG-4w-y2B" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Kwi-Yk-VXP"/>
                             <constraint firstItem="9to-VP-iMD" firstAttribute="top" secondItem="msW-Ye-Aka" secondAttribute="bottom" constant="20" id="L0m-Zh-DMp"/>
                             <constraint firstItem="VgI-jt-bUN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="MEk-lI-Cbx"/>
+                            <constraint firstItem="tPG-4w-y2B" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="V0f-03-FEn"/>
                             <constraint firstItem="klf-hw-uwQ" firstAttribute="top" secondItem="9to-VP-iMD" secondAttribute="bottom" constant="30" id="YRo-ne-eMB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VgI-jt-bUN" secondAttribute="trailing" constant="15" id="ZpC-pW-KN9"/>
                             <constraint firstItem="klf-hw-uwQ" firstAttribute="centerX" secondItem="VgI-jt-bUN" secondAttribute="centerX" id="e9M-jo-KSk"/>

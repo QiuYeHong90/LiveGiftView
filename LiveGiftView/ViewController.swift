@@ -19,7 +19,11 @@ class ViewController: UIViewController {
     }
     
     
-
+    @IBAction func clearViewsClick(_ sender: Any) {
+        
+        self.giftManager.removeAllGifts()
+    }
+    
     @IBAction func sendBtnClick(_ sender: UIButton) {
         if let key = sender.currentTitle {
             let model = GiftModel.init()
