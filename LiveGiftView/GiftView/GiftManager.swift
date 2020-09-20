@@ -14,8 +14,6 @@ class GiftManager: NSObject {
     
     static let itemW:CGFloat = 230
     static let itemH:CGFloat = 40
-    
-    
     /// 最下面的y值坐标
     static let maxY = UIScreen.main.bounds.size.height - 200
     /// 最大展示数量
