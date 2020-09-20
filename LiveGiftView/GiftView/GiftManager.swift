@@ -147,10 +147,13 @@ class GiftManager: NSObject {
     }
     
     func restXZViewFrame(itemView:GiftShowView) {
-        
+        var rect = itemView.frame
+        rect.size.height = GiftManager.itemH
+        itemView.frame = rect
         for (index,item) in self.giftViews.enumerated() {
             if itemView == item {
 //                找到闲置的把它放后面
+                
                 self.giftViews.remove(at: index)
                 self.giftViews.append(item)
                

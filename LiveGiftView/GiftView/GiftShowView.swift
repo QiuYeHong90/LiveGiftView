@@ -37,16 +37,16 @@ class GiftShowView: UIView {
     }
     var status:GiftShowStatus = .ended
     
-    var endAnimatinCall:(()->Void)?
+    var reloadAnimation:(()->Void)?
     var endFinshCall:((GiftShowView?)->Void)?
     
-    class func createViewWith(supV:UIView,endAnimatinCall:@escaping (()->Void),endFinshCall:@escaping ((GiftShowView?)->Void)) -> GiftShowView {
+    class func createViewWith(supV:UIView,reloadAnimation:@escaping (()->Void),endFinshCall:@escaping ((GiftShowView?)->Void)) -> GiftShowView {
         
          
         let view:GiftShowView = Bundle.main.loadNibNamed("GiftShowView", owner: nil, options: nil)!.first as! GiftShowView
         view.layoutIn()
         
-        view.endAnimatinCall = endAnimatinCall
+        view.reloadAnimation = reloadAnimation
         view.endFinshCall = endFinshCall
         supV.addSubview(view)
         
@@ -84,6 +84,7 @@ class GiftShowView: UIView {
         rect.origin.x = 0
         UIView.animate(withDuration: 0.25, delay: 0, options: UIView.AnimationOptions.curveEaseInOut) {
             self.frame = rect
+            self.reloadAnimation?()
         } completion: { (falg) in
             
         }
@@ -112,7 +113,7 @@ class GiftShowView: UIView {
             rect.size.height = 0
             self.frame = rect
             UIView.animate(withDuration: 0.25) {
-                self.endAnimatinCall?()
+                self.reloadAnimation?()
                 
             } completion: { (falg) in
                 self.status = .ended
