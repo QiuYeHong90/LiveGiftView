@@ -44,7 +44,7 @@ class GiftManager: NSObject {
             let view = GiftShowView.createViewWith(supV: superView) {
                 [weak self] in
                 
-                self?.endGiftViewsAnimation()
+                self?.reloadGiftViewsAnimation()
                 
                 
             } endFinshCall: {
@@ -174,8 +174,8 @@ class GiftManager: NSObject {
         return count
     }
     
-    /// 一个礼物消失，其他正在展示的礼物横幅下滑
-    func endGiftViewsAnimation() {
+    /// 一个礼物消失，其他正在展示的礼物横幅下滑,或者礼物开始的时候，检查所有布局
+    func reloadGiftViewsAnimation() {
         var index:Int = 0
         for item in self.giftViews {
             if item.status != .ended,item.status != .ending1 {
