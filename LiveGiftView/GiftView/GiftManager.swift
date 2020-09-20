@@ -42,18 +42,21 @@ class GiftManager: NSObject {
         
         if giftView == nil {
             let view = GiftShowView.createViewWith(supV: superView) {
+                [weak self] in
                 
-                self.endGiftViewsAnimation()
+                self?.endGiftViewsAnimation()
                 
                 
             } endFinshCall: {
                 
-                
-                
-                if let spV = self.superView{
-                    if let firstM = self.cacheModels.first {
-                        self.cacheModels.removeFirst()
-                        self.addGiftView(with: spV , model: firstM)
+                [weak self] (itemView)in
+                if let v = itemView{
+                    self?.restXZViewFrame(itemView: v);
+                }
+                if let spV = self?.superView{
+                    if let firstM = self?.cacheModels.first {
+                        self?.cacheModels.removeFirst()
+                        self?.addGiftView(with: spV , model: firstM)
                     }
                     
                     
@@ -90,6 +93,8 @@ class GiftManager: NSObject {
         
         
     }
+    
+    
     
     /// 添加到缓存
     /// - Parameter model: 模型数据
@@ -141,6 +146,18 @@ class GiftManager: NSObject {
         return nil
     }
     
+    func restXZViewFrame(itemView:GiftShowView) {
+        
+        for (index,item) in self.giftViews.enumerated() {
+            if itemView == item {
+//                找到闲置的把它放后面
+                self.giftViews.remove(at: index)
+                self.giftViews.append(item)
+               
+            }
+        }
+    }
+    
     //    正在展示的数量
     func giftStatsShowCount() -> Int {
         var count:Int = 0
@@ -159,14 +176,17 @@ class GiftManager: NSObject {
         var index:Int = 0
         for item in self.giftViews {
             if item.status != .ended,item.status != .ending1 {
-                
                 var rect = item.frame ;
                 
                 rect.origin.y = GiftManager.maxY - CGFloat(index) * (rect.height + 13);
                 item.frame = rect
                 
                 index += 1
+
+            }else{
+
             }
+            
         }
     }
     

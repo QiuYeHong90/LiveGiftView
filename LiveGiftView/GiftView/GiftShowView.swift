@@ -8,6 +8,10 @@
 import UIKit
 
 class GiftShowView: UIView {
+    
+
+    
+    
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var numberLab: GiftNumberLab!
     @IBOutlet weak var headerImgView: UIImageView!
@@ -34,9 +38,9 @@ class GiftShowView: UIView {
     var status:GiftShowStatus = .ended
     
     var endAnimatinCall:(()->Void)?
-    var endFinshCall:(()->Void)?
+    var endFinshCall:((GiftShowView?)->Void)?
     
-    class func createViewWith(supV:UIView,endAnimatinCall:@escaping (()->Void),endFinshCall:@escaping (()->Void)) -> GiftShowView {
+    class func createViewWith(supV:UIView,endAnimatinCall:@escaping (()->Void),endFinshCall:@escaping ((GiftShowView?)->Void)) -> GiftShowView {
         
          
         let view:GiftShowView = Bundle.main.loadNibNamed("GiftShowView", owner: nil, options: nil)!.first as! GiftShowView
@@ -113,7 +117,7 @@ class GiftShowView: UIView {
             } completion: { (falg) in
                 self.status = .ended
                 
-                self.endFinshCall?()
+                self.endFinshCall?(self)
             }
 
         }
