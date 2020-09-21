@@ -81,12 +81,14 @@ class GiftShowView: UIView {
     
     func showAnimation() {
         self.showStatus()
-        
+        self.alpha = 0
         var rect = self.frame
         rect.origin.x = 0
         UIView.animate(withDuration: 0.25, delay: 0, options: UIView.AnimationOptions.curveEaseInOut) {
+            self.alpha = 1
             self.frame = rect
             self.reloadAnimation?()
+            
         } completion: { (falg) in
             
         }
@@ -110,7 +112,10 @@ class GiftShowView: UIView {
         
         UIView.animate(withDuration: 0.25, delay: 0, options: UIView.AnimationOptions.curveEaseIn) {
             self.frame = rect
+            self.alpha = 0
         } completion: { (falg) in
+            self.isHidden = true
+            
             self.status = .ending1
             rect.size.height = 0
             self.frame = rect
@@ -118,6 +123,7 @@ class GiftShowView: UIView {
                 self.reloadAnimation?()
                 
             } completion: { (falg) in
+                
                 self.status = .ended
                 
                 self.endFinshCall?(self)

@@ -12,8 +12,8 @@ class GiftManager: NSObject {
     /// 超过最大数量缓存起来
     var cacheModels:[GiftModel] = [GiftModel]();
     
-    static let itemW:CGFloat = 230
-    static let itemH:CGFloat = 40
+    static let itemW:CGFloat = 250
+    static let itemH:CGFloat = 45
     /// 最下面的y值坐标
     static let maxY = UIScreen.main.bounds.size.height - 200
     /// 最大展示数量

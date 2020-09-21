@@ -13,4 +13,7 @@ class GiftModel: NSObject {
     /// 礼物数量
     var number:Int = 1
     
+    deinit {
+        print("释放==\(self)")
+    }
 }

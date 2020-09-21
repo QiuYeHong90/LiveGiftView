@@ -16,6 +16,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+//        for item in 0...100 {
+//            
+//            
+//            let model = GiftModel.init()
+//            model.number = 120
+//            print("click_giftkey______\(item)")
+//            model.key = "\(item)"
+//            self.giftManager.addGiftView(with: self.view, model: model);
+//        }
+        
     }
     
     
@@ -27,7 +38,7 @@ class ViewController: UIViewController {
     @IBAction func sendBtnClick(_ sender: UIButton) {
         if let key = sender.currentTitle {
             let model = GiftModel.init()
-            
+            model.number = 1000000
             print("click_giftkey______\(key)")
             model.key = key
             self.giftManager.addGiftView(with: self.view, model: model);
