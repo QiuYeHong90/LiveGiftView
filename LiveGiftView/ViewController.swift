@@ -41,7 +41,8 @@ class ViewController: UIViewController {
             model.number = 1000000
             print("click_giftkey______\(key)")
             model.key = key
-            self.giftManager.addGiftView(with: self.view, model: model);
+            
+            self.giftManager.addGiftView(with: self.view, model: model, cellClass: GiftShowView.classForCoder().self as? GiftItemViewProtocol.Type);
         }
         
         

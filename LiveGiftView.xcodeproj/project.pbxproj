@@ -20,6 +20,7 @@
 		A10328F225165B8D0088F108 /* GiftModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10328F125165B8D0088F108 /* GiftModel.swift */; };
 		A10328F725165D310088F108 /* GiftShowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10328F625165D310088F108 /* GiftShowView.xib */; };
 		A10328FC25174D1B0088F108 /* GiftNumberLab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10328FB25174D1B0088F108 /* GiftNumberLab.swift */; };
+		A103292525184E290088F108 /* GiftItemViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103292425184E290088F108 /* GiftItemViewProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		A10328FB25174D1B0088F108 /* GiftNumberLab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftNumberLab.swift; sourceTree = "<group>"; };
 		A1032900251755B80088F108 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A10329012517572E0088F108 /* test.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = test.gif; sourceTree = "<group>"; };
+		A103292425184E290088F108 /* GiftItemViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftItemViewProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				A10328E9251645410088F108 /* GiftManager.swift */,
 				A10328F125165B8D0088F108 /* GiftModel.swift */,
 				A10328FB25174D1B0088F108 /* GiftNumberLab.swift */,
+				A103292425184E290088F108 /* GiftItemViewProtocol.swift */,
 			);
 			path = GiftView;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				A10328EA251645410088F108 /* GiftManager.swift in Sources */,
 				A10328F225165B8D0088F108 /* GiftModel.swift in Sources */,
 				A1032877251628700088F108 /* SceneDelegate.swift in Sources */,
+				A103292525184E290088F108 /* GiftItemViewProtocol.swift in Sources */,
 				A10328E4251644E60088F108 /* GiftShowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

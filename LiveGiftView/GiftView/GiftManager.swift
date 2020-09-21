@@ -7,7 +7,10 @@
 
 import UIKit
 
+
+
 class GiftManager: NSObject {
+    
     
     /// 超过最大数量缓存起来
     var cacheModels:[GiftModel] = [GiftModel]();
@@ -21,27 +24,37 @@ class GiftManager: NSObject {
     
     
     /// 重用礼物view
-    var giftViews:[GiftShowView] = [GiftShowView]()
+    var giftViews:[GiftItemViewProtocol] = [GiftItemViewProtocol]()
     
     /// 缓存父类视图
     var superView:UIView?
     
     
+    func addGiftView(with superView:UIView,model:GiftModel,cellClass:GiftItemViewProtocol.Type?) {
+        
+        
+        
+        if let typeC = cellClass.self {
+            self.add1GiftView(with: superView, model: model, cellClass: typeC);
+        }
+    }
+    
     /// 添加横幅礼物
     /// - Parameters:
     ///   - superView: 父类视图
     ///   - model: 数据模型
-    func addGiftView(with superView:UIView,model:GiftModel) {
+    private func add1GiftView(with superView:UIView,model:GiftModel,cellClass:GiftItemViewProtocol.Type) {
         self.superView = superView
         if self.giftIsShow(with: model) {
             return
         }
         
         
-        var giftView:GiftShowView? = self.giftViewEndedView()
+        var giftView:GiftItemViewProtocol? = self.giftViewEndedView()
         
         if giftView == nil {
-            let view = GiftShowView.createViewWith(supV: superView) {
+            
+            let view = cellClass.createViewWith(supV: superView) {
                 [weak self] in
                 
                 self?.reloadGiftViewsAnimation()
@@ -56,7 +69,7 @@ class GiftManager: NSObject {
                 if let spV = self?.superView{
                     if let firstM = self?.cacheModels.first {
                         self?.cacheModels.removeFirst()
-                        self?.addGiftView(with: spV , model: firstM)
+                        self?.addGiftView(with: spV , model: firstM, cellClass: cellClass)
                     }
                     
                     
@@ -133,7 +146,7 @@ class GiftManager: NSObject {
     
     /// 闲置的view
     /// - Returns: view
-    func giftViewEndedView() -> GiftShowView? {
+    func giftViewEndedView() -> GiftItemViewProtocol? {
         
         for (index,item) in self.giftViews.enumerated() {
             if item.status == .ended {
@@ -146,7 +159,7 @@ class GiftManager: NSObject {
         return nil
     }
     
-    func restXZViewFrame(itemView:GiftShowView) {
+    func restXZViewFrame(itemView:GiftItemViewProtocol) {
         var rect = itemView.frame
         rect.size.height = GiftManager.itemH
         itemView.frame = rect
