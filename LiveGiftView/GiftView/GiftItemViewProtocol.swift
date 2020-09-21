@@ -18,7 +18,15 @@ enum GiftItemViewStatus:Int {
     /// 已经结束闲置状态
     case ended
 }
-protocol GiftItemViewProtocol:UIView {
+
+@objc protocol BaseItemViewProtocol {
+    @objc func ObjEndAnimation() ;
+}
+
+
+protocol GiftItemViewProtocol:UIView,BaseItemViewProtocol {
+    
+    var numberLab: GiftNumberLab!{set get}
     /// 礼物结束动画完成结束
     var endFinshCall:((GiftItemViewProtocol?)->Void)?{set get}
     /// 礼物开始出现，和结束的时候，回调
@@ -27,7 +35,8 @@ protocol GiftItemViewProtocol:UIView {
     var status:GiftItemViewStatus{set get}
     var model:GiftModel?{set get}
     static func createViewWith(supV:UIView,reloadAnimation:@escaping (()->Void),endFinshCall:@escaping ((GiftItemViewProtocol?)->Void)) -> GiftItemViewProtocol ;
-    
+    ///    更新布局
+    func layoutIn();
     func showAnimation();
     /// 机选展示连续点击
     /// - Parameter isContinueClick: 是否连续点击
@@ -36,6 +45,43 @@ protocol GiftItemViewProtocol:UIView {
 }
 
 extension GiftItemViewProtocol{
+    
+    static func createViewWith(supV: UIView, reloadAnimation: @escaping (() -> Void), endFinshCall: @escaping ((GiftItemViewProtocol?) -> Void)) -> GiftItemViewProtocol {
+        
+        let view:GiftItemViewProtocol = Bundle.main.loadNibNamed("\(Self.self)", owner: nil, options: nil)!.first as! GiftItemViewProtocol
+        view.layoutIn()
+        view.alpha = 0
+        view.reloadAnimation = reloadAnimation
+        view.endFinshCall = endFinshCall
+        supV.addSubview(view)
+        
+        view.frame = CGRect.init(x: -GiftManager.itemW, y: GiftManager.maxY, width: GiftManager.itemW, height: GiftManager.itemH)
+//        view.backgroundColor = UIColor.red
+        
+        
+        return view
+    }
+    
+    /// 机选展示连续点击
+    /// - Parameter isContinueClick: 是否连续点击
+    func showStatus(isContinueClick:Bool = false) {
+        self.status = .show
+        self.isHidden = false
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+        
+        self.perform(#selector(self.ObjEndAnimation), with: nil, afterDelay: 3)
+        if let key = self.model?.key {
+            print("showStatus_giftkey______\(key)")
+        }
+        if isContinueClick {
+            self.numberLab.showNumAnimation {
+                
+            }
+        }
+        
+    }
+    
+    
     func showAnimation() {
         self.showStatus(isContinueClick: false)
         self.alpha = 0
