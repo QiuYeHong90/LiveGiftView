@@ -15,8 +15,8 @@ class GiftManager: NSObject {
     /// 超过最大数量缓存起来
     var cacheModels:[GiftModel] = [GiftModel]();
     
-    static let itemW:CGFloat = 250
-    static let itemH:CGFloat = 45
+    static var itemW:CGFloat = 250
+    static var itemH:CGFloat = 45
     /// 最下面的y值坐标
     static let maxY = UIScreen.main.bounds.size.height - 200
     /// 最大展示数量
@@ -44,6 +44,11 @@ class GiftManager: NSObject {
     ///   - superView: 父类视图
     ///   - model: 数据模型
     private func add1GiftView(with superView:UIView,model:GiftModel,cellClass:GiftItemViewProtocol.Type) {
+        
+        let size = cellClass.getItemSize()
+        GiftManager.itemW = size.width
+        GiftManager.itemH = size.height
+        
         self.superView = superView
         if self.giftIsShow(with: model) {
             return

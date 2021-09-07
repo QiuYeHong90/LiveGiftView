@@ -75,8 +75,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bgView" destination="abE-3m-w50" id="ed2-gQ-Wzh"/>
+                <outlet property="giftNameLab" destination="Ke3-1Z-WKm" id="sc9-qi-qAQ"/>
                 <outlet property="headerImgView" destination="4XL-5J-jls" id="o4T-vX-9Ae"/>
                 <outlet property="numberLab" destination="nlg-m0-X07" id="VD7-5p-oXL"/>
+                <outlet property="userNameLab" destination="8gA-Bj-IPj" id="ceN-Ug-jGj"/>
             </connections>
             <point key="canvasLocation" x="102.89855072463769" y="-327.45535714285711"/>
         </view>

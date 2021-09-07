@@ -42,6 +42,8 @@ protocol GiftItemViewProtocol:UIView,BaseItemViewProtocol {
     /// - Parameter isContinueClick: 是否连续点击
     func showStatus(isContinueClick:Bool);
     
+    
+    static func getItemSize() -> CGSize;
 }
 
 extension GiftItemViewProtocol{
@@ -56,9 +58,6 @@ extension GiftItemViewProtocol{
         supV.addSubview(view)
         
         view.frame = CGRect.init(x: -GiftManager.itemW, y: GiftManager.maxY, width: GiftManager.itemW, height: GiftManager.itemH)
-//        view.backgroundColor = UIColor.red
-        
-        
         return view
     }
     

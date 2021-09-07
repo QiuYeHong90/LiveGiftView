@@ -11,6 +11,8 @@ import UIKit
 
 class GiftShowView: UIView,GiftItemViewProtocol {
 
+    @IBOutlet weak var giftNameLab: UILabel!
+    @IBOutlet weak var userNameLab: UILabel!
     @IBOutlet weak var numberLab: GiftNumberLab!
     var status:GiftItemViewStatus = .ended
     /// 礼物开始出现，和结束的时候，回调
@@ -34,7 +36,9 @@ class GiftShowView: UIView,GiftItemViewProtocol {
     func ObjEndAnimation() {
         self.endAnimation()
     }
-    
+    static func getItemSize() -> CGSize{
+        return CGSize.init(width: 250, height: 45)
+    }
     func layoutIn() {
         self.bgView.layer.cornerRadius = self.bgView.bounds.size.height/2
         self.headerImgView.layer.cornerRadius = self.headerImgView.bounds.size.height/2
